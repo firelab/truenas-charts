@@ -34,11 +34,7 @@ workload:
             username: {{ .Values.collaboraConfig.username }}
             password: {{ .Values.collaboraConfig.password }}
             {{- end }}
-            {{- if not (contains ":" .Values.collaboraConfig.serverName) }}
-            server_name: {{ printf "%s:%v" .Values.collaboraConfig.serverName .Values.collaboraNetwork.webPort }}
-            {{- else }}
             server_name: {{ .Values.collaboraConfig.serverName }}
-            {{- end }}
           {{ with .Values.collaboraConfig.additionalEnvs }}
           envList:
             {{ range $env := . }}
